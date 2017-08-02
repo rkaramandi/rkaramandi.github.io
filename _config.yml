@@ -1,43 +1,74 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Basic
+name:               "Connect > A Tech Blog by Rohan Karamandi"
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: "> Connect - A technology blog by Rohan Karamandi"
-#email: your-email@example.com
-#description: > # this means to ignore newlines until "baseurl:"
-#  Write an awesome description for your new site here. You can edit this
-#  line in _config.yml. It will appear in your document head meta (for
-#  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: rohank9
-github_username:  rkaramandi
+author:
+  twitter:          rohank9
+  github:           rkaramandi
+  linkedin:         rkaramandi
+  instagram:        rohank9
 
-# Build settings
-markdown: kramdown
-theme: minima
+copyright:
+  year:             2017
+  name:             "Rohan Karamandi"
+
+# Google-analytics
+google-analytics:
+  id:               ""
+
+# Disqus
+# disqus:
+#   id:               ""
+
+# URL
+url:                "" # the base hostname & protocol for your site
+baseurl:            "" # the subpath of your site, e.g. /blog
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:           America/Toronto
+permalink:          /:title/
+
+# Pagination
+paginate:           10
+paginate_path:      /page:num/
+
+# Markdown
+markdown:           kramdown
+kramdown:
+  input:            GFM
+
+# Navigation
+nav:
+  - name:           "About"
+    url:            "/about"
+  # - name:           "Archive"
+  #   url:            "/archive"
+  - name:           "Tags"
+    url:            "/tags"
+
+
+# Sass
+sass:
+  sass_dir:         _sass
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+# jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
 plugins:
-  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:            [vendor]
