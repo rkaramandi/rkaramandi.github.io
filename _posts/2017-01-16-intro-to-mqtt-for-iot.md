@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "MQTT // An Intro to MQTT for IoT"
+description: A beginner's introduction into MQTT, a protocol used in the world of IoT, as well as app development.
 date:   2017-01-16
-categories: home-automation
+tags: [mqtt, iot, home-automation]
+comments: true
+share: true
 ---
 I use MQTT for custom sensors and integrating external platforms in my home automation setup. For those who are wondering, I’m using a combination of Home Assistant and SmartThings for my HA setup; but I’ll save those details for a separate post.
 
@@ -18,7 +21,7 @@ Let’s start with the easier two: the publisher and subscribers. Essentially, t
 
 Put together, you have something that looks like this in a Publisher/Subscriber Model:
 
-![MQTT Pub/Sub Model]({{ site.url }}/assets/3-mqtt-intro/figure_1_mqtt_client-server.png)
+![MQTT Pub/Sub Model]({{ site.url }}/images/3-mqtt-intro/figure_1_mqtt_client-server.png)
 
 ## OK...Give Me An Example!
 
@@ -37,7 +40,7 @@ Now let’s take these concepts and apply it to something simple like a home aut
 
 So - You walk into the room and turn on the light manually using the switch on the wall. Now, the light switch closes the circuit, turning on the light; also, it fires off a message using the MQTT protocol to the MQTT broker, who’s IP is `192.168.1.2`, announcing to the topic `Lights/Office_Room/Status` is `ON`. That message is now pushed to anyone listening - in our example, this could be a home automation engine. So, the automation engine who asked to subscribe to the topic `Lights/Office_Room/Status` from `192.168.1.2` (can be authenticated, or not…depending on how the broker is set up), now receives an update: `ON`, and the user can log in and see that the light switch is on.
 
-![Sending A Message]({{ site.url }}/assets/3-mqtt-intro/figure_2_light_switch.png)
+![Sending A Message]({{ site.url }}/images/3-mqtt-intro/figure_2_light_switch.png)
 
 Similarly, if the switch can act as a subscriber as well, the home automation engine can send an `OFF` back to the switch (whether by user input, automation, etc.), and the switch would turn off.
 

@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Running NGINX and CertBot Containers on the Same Host"
+title:  "Gist // Running NGINX and CertBot Containers on the Same Host"
+description: I created this Gist to share my Nginx and CertBot container configuration to automate the provisioning of SSL certs for websites using the Let's Encrypt project.
 date:   2017-05-29
-categories: docker
+tags: [letsencrypt, ssl, nginx, linux, certbot]
+comments: true
+share: true
 ---
 
 ## The Problem

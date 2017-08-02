@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "VXLAN // MP-BGP EVPN"
+description: A second post on VXLAN - but this time, we talk about the more modern and scalable approach using MP-BGP.
 date:   2016-12-14
-categories: vxlan
+tags: [vxlan, datacenter, networking, sdn]
+comments: true
+share: true
 ---
 If you aren't familiar with VXLAN, check out my initial post on VXLAN to get an idea of what it is.
 

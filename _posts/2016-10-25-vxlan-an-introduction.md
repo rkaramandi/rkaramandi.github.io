@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "VXLAN // An Introduction"
+description: An basic introduction into VXLAN, the protocol used in a lot of SDN-ready networks today.
 date:   2016-10-25
-categories: vxlan
+tags: [vxlan, datacenter, networking, sdn]
+comments: true
+share: true
 ---
 For my first blog post - I thought I should start with something that a lot of people have been asking me lately: "What the $!@% is VXLAN?". There's been a lot of talk lately about the “next generation data center” using VXLAN - whether that's Cisco, VMware, Arista, etc. – data center technology is moving down this path. I’ll note that this isn’t meant to be a deep-dive into VXLAN, but rather a high-level overview of what it is and why it matters.
 
@@ -29,11 +32,11 @@ Now, let’s expand on the example I gave above with the multi-tenant cloud envi
 
 This means that something that might physically look like this (note that the different clients in this example are using the same IP numbering scheme):
 
-![Network Diagram]({{ site.url }}/assets/1-vxlan-intro/Figure_2-CSP_Physical_Layout.png)
+![Network Diagram]({{ site.url }}/images/1-vxlan-intro/Figure_2-CSP_Physical_Layout.png)
 
 Really achieves this:
 
-![Logical Diagram]({{ site.url }}/assets/1-vxlan-intro/Figure_3-Logical_Tunneled_Network.png)
+![Logical Diagram]({{ site.url }}/images/1-vxlan-intro/Figure_3-Logical_Tunneled_Network.png)
 
 Obviously, this is a grossly over-simplified diagram, but it gets the point across. Think of the diagram spread out over thousands of hosts, with hundreds of VMs each - some of which possibly may even require L2 adjacency between hosts or data centers.
 
@@ -41,7 +44,7 @@ Obviously, this is a grossly over-simplified diagram, but it gets the point acro
 
 As mentioned above, VXLAN is a MAC-in-UDP encapsulation method, which sounds a lot more complicated than it actually is. It looks something like this:
 
-![Logical Diagram]({{ site.url }}/assets/1-vxlan-intro/Figure_1-VXLAN_Packet_Structure.png)
+![Logical Diagram]({{ site.url }}/images/1-vxlan-intro/Figure_1-VXLAN_Packet_Structure.png)
 
 As you can see here, it’s a standard frame (the original frame), encapsulated in another standard frame, with a bit of magic in the middle, highlighted in blue. First, you have a normal UDP header as part of the outside frame, using port 4789, which is the IANA-assigned port number for VXLAN. Inside this, there is the original frame, and the VXLAN header. The two important pieces in this are the 5th reserved bit in the flag, and the 24-bit VNI, that identify VXLAN and the segment this frame belongs to.
 

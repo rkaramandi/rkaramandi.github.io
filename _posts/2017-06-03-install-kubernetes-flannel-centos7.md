@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "Install Kubernetes with Flannel Network Plugin on CentOS 7"
+title:  "Gist // Install Kubernetes with Flannel Network Plugin on CentOS 7"
+description: Thought I would create a Gist and document installing Flannel with Kubernetes on CentOS
 date:   2017-06-03
-categories: docker
+tags: [kubernetes, docker, flannel, linux]
+comments: true
+share: true
 ---
 
 ## Install Prerequisites on ALL (Worker and Master) Nodes
