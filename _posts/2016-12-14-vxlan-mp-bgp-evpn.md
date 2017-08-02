@@ -50,7 +50,7 @@ First - Every VTEP is configured on every switch so that the leafs can learn the
 
 Cisco has a somewhat convoluted image describing this:
 
-![Asynchronous IRB] (http://www.cisco.com/c/dam/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-734107.doc/_jcr_content/renditions/guide-c07-734107_2.jpg)
+![Asynchronous IRB](http://www.cisco.com/c/dam/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-734107.doc/_jcr_content/renditions/guide-c07-734107_2.jpg)
 
 (Figure 3 on [Cisco's Nexus 9000 Page](http://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/guide-c07-734107.html#_Toc444553361))
 
