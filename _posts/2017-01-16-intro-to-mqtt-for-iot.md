@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "MQTT // An Intro to MQTT for IoT"
-description: 
+description: Lately, I've been into building custom sensors and I've been talking to Farraday Robotech and he mentioned that it would be pretty helpful if I could do an introductory post about MQTT and its use in IoT applications.
 date: 2017-01-16
 tags: [mqtt, iot, home-automation]
 comments: true
