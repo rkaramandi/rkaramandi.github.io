@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "VXLAN // An Introduction"
-description: 
+description: For my first blog post - I thought I should start with something that a lot of people have been asking me lately: "What the **** is VXLAN?". There's been a lot of talk lately about the “next generation data center” using VXLAN - whether that's Cisco, VMware, Arista, etc. – data center technology is moving down this path. I’ll note that this isn’t meant to be a deep-dive into VXLAN, but rather a high-level overview of what it is and why it matters.
 date:   2016-10-25
 tags: [vxlan, datacenter, networking, sdn]
 comments: true
