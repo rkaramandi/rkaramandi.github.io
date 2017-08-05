@@ -9,7 +9,8 @@ share: true
 ---
 For whatever reason, I end up supporting technology for a lot of events, some simultaneously. A lot of times, when you’re using Telepresence endpoints for events, remote hands-on labs, etc. you want to be able to have separation between events so that one group doesn’t break another group’s stuff. At the same time, I don’t want to have to be deploying 30 different routers in my DMZ for 30 different events; it’s just an administrative nightmare. Instead, what we opted for, was to use multi-tenanted DMVPN headend for site-to-site connectivity.
 
-## What is DMVPN? And why DMVPN over traditional site-to-site VPN?
+What is DMVPN? And why DMVPN over traditional site-to-site VPN?
+===============================================================
 
 If you already know what DMVPN is, as well as it’s history,  then skip this section. DMVPN as a technology has come pretty far from it’s first iteration (phase 1). Since then we’ve had two more iterations (phases 2 and 3, respectively).
 
@@ -22,7 +23,8 @@ As an example, when I built a mobile venue on a train, I had a DMVPN client rout
 
 With phase 2 and phase 3, you can also do some neat things like preserve Quality of Service (QoS) markings across the tunnel, enable multicast across the tunnel (and proper routing protocols that leverage multicast).
 
-## Basic Router Configuration
+Basic Router Configuration
+==========================
 
 First, we need to get some basic configuration on the routers to make sure the devices can get out, and to make sure that we can manage the devices securely. This includes things like NAT, VLANs, IP addressing, and SSH. I also added a separate management VRF on the headend that connects back to my management infrastructure, and I can use this for SSH, SNMP, Netflow, etc.
 
@@ -41,7 +43,8 @@ interface GigabitEthernet0/1
 
 I’m not going to go through everything for the basics, as there are many guides on basic router setup and hardening. I will say though, I typically find the Cisco CLI Analyzer tool  quite useful for finding if I missed something up from a router-hardening perspective, and for general troubleshooting. You can find it at [http://cway.cisco.com/go/sa](http://cway.cisco.com/go/sa).
 
-## VRF and FVRF
+VRF and FVRF
+============
 
 As part of our security posture, and isolation requirements, we decided it would be best if we implemented a Front Door VRF (FVRF), as well as multiple VRF’s to separate the clients. This way, if there’s a provider that has any issues, etc., our routes don’t necessarily get leaked out, and vice versa . This also helps to protect our internal networks in the event that someone on the untrusted WAN accidentally stumbles their way onto our routing tables! The idea of a FVRF is that it acts as a front door and stops unwanted routes, etc. from getting fat-fingered in. That VRF only contains the default-route out, and any routing required for the ISP. Note that the only interface in the FVRF is the outside interface. The tunnel interfaces, and any other interfaces will be configured on separate VRF’s and the default routes will be leaked out to point to the FVRF. FVRF’s are also great when you have multiple outbound interfaces. You isolate the different WAN links (whether Internet, MPLS, LTE, etc), and ensure that tunnel interfaces, etc. use the right outbound interfaces without creating route recursion issues.
 
@@ -53,7 +56,8 @@ Also note that when you apply the “vrf forwarding <VRF_NAME>” command on an 
 
 Let’s start – first we’re going to define the FVRF on the Headend and Client routers, and enable the IPv4 address familes on them. We’ll allow multicast by creating a multicast address-family on the Tenant VRF as well:
 
-### Headend:
+Headend:
+--------
 
 ```
 vrf definition VRF-FRONT
@@ -77,7 +81,8 @@ interface GigabitEthernet0/0
  ip address x.x.x.x x.x.x.x !If you already had an IP address configured, don’t forget to re-add it!
 ```
 
-### Client Router:
+Client Router:
+--------------
 
 ```
 vrf definition VRF-FRONT
@@ -105,7 +110,8 @@ ip route vrf VRF-FRONT 0.0.0.0 0.0.0.0 x.x.x.x
 
 If you noticed, we created the Tenant-1 VRF as well above on the hub router. When we create the virtual tunnel interface (VTI) on the hub later, we have to make sure that we define the FVRF in the VTI so that the traffic is able to get out and respond to the client router and form the tunnel. We do this by adding the tunnel vrf VRF-FRONT command in the VTI configuration.
 
-## Zone-Based Firewall
+Zone-Based Firewall
+===================
 
 Since our network traffic requirements were relatively light, and these routers are short-term devices, we decided to consolidate our deployment and run our stateful firewalling using the ISR’s built-in Zone-Based Firewall (ZBFW) capabilities. If this were a permanent installation with heavy traffic requirements, it would make more sense to deploy a dedicated next-generation firewall (NGFW) along side our routers. But since our goal is to deploy these routers and networks quickly, the ISR ZBFW works wonderfully.
 
@@ -239,7 +245,8 @@ zone-pair security ZONE-OUTSIDE-TO-SELF source OUTSIDE destination self
 
 And there it is! Zone-based firewall done! As a note – this config is from my client router, but I used it on the headend  router as well, but with different zones (i.e. Tenant-1, Tenant-2, etc. instead of Inside). One thing I learnt while doing this is that zones must be in the same VRF (i.e. you can’t have one INSIDE zone for all your tenants; you need separate ones between VRF’s…which is probably for the best anyways)
 
-## Phase 3 DMVPN
+Phase 3 DMVPN
+=============
 
 As I previously mentioned, DMVPN as a technology has come a long way. In phase-1, the communication was very basic, where there really wasn’t much in the way of spoke-to-spoke communication. Though spokes could discover themselves dynamically, the path was persistent through the hub. In other words, all traffic flowed through the hub. With phase-2 came the ability to dynamically build spoke-to-spoke tunnels, where the hub basically just acted as a directory to point to other spokes, if the spoke needed to send information to another spoke. With phase-2 also introduced tiered-hubs, where you can have spokes, regional hubs where the spokes connect, and global hubs that connect the regional hubs. In phase-2, moving traffic between the hubs flowed through the global hub (similar to how phase-1 worked), but phase-3 introduces spoke-to-spoke communication even between spokes separated by different regional hubs.
 
@@ -311,7 +318,8 @@ interface Tunnel0
 ```
 And that should be it!
 
-## Securing the tunnel
+Securing the tunnel
+===================
 
 This is the part I dread the most.
 
@@ -365,7 +373,8 @@ Doing this on all the routers gets us security and privacy on our DMVPN tunnels.
 
 **Note:** Even though we’re not using IKEv1, it’s a good idea to turn off aggressive-mode key-exchange that’s used with IKEv1 by using the command: `crypto isakmp aggressive-mode disable` as aggressive mode is pretty insecure. It was created to make the negotiation more streamlined, but instead ends up being worse-off from a security-posture perspective, as it can be exploited.
 
-## Routing
+Routing
+=======
 
 The routing for this would be similar to how you would normally use routing, we just added the interfaces that we wanted to advertise and added the networks we needed to add. I decided to use named-EIGRP, since I found it a little more structured and more logical when working with VRF’s. A lot of people use BGP between WAN links, which is great. We just didn’t for this since we aren’t doing anything special with it.
 
@@ -414,7 +423,8 @@ router eigrp EIGRP-TENANT1
  exit-address-family
 ```
 
-## Conclusion
+Conclusion
+==========
 
 All of what we’ve done here is actually as per the IWAN design guide.  If you do this utilizing multiple WAN (Internet, Cell, MPLS) links, that’s technically a proper IWAN design. Some elements that are missing between this and the IWAN CVD are: Direct Internet Access, Performance Routing (PfR), and Policy-based Routing (PBR). I grabbed some stuff on here from the IWAN book, which I think is a great resource, and explains this stuff in pretty in-depth detail. You can find it on on [Amazon](https://www.amazon.ca/Cisco-Intelligent-IWAN-Brad-Edgeworth/dp/1587144638).
 
