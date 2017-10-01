@@ -1,11 +1,11 @@
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 {% if site.google-analytics %}
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103855580-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103855580-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
 
-  gtag('config', '{{ site.google-analytics.id }}');
-</script>
+    gtag('config', '{{ site.google-analytics.id }}');
+  </script>
 {% endif %}
