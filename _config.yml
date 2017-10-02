@@ -16,8 +16,8 @@ google-analytics:
   id:               "UA-103855580-1"
 
 # Disqus
-# disqus:
-#   id:               ""
+disqus:
+  id:               "karamandi"
 
 # URL
 url:                "http://pages.karamandi.com" # the base hostname & protocol for your site
