@@ -63,7 +63,7 @@ For my home automation hub, I use a combination of [Home Assistant](https://home
 I've been asked a couple of times about why I'm using Home Assistant when I already have a SmartThings hub. There are a few reasons:
   1. I really don't want to learn Groovy - the programming language they use
   2. The automations I want to do aren't really too complicated, and I found that automating them using ST was just too much
-  3. The ecosystem is massive, and growing even faster; people like [Frenck](https://twitter.com/Frenck) and [Dale](https://twitter.com/dale3h)
+  3. The ecosystem is massive, and growing even faster; people like [Franck](https://twitter.com/Frenck) and [Dale](https://twitter.com/dale3h)
   4. Being an open ecosystem, you know exactly what's going into the code, and eventually exactly what you're running at home. Plus it's all local with no dependence on the cloud (unless of course you've got a cloud service you're using; and/or are using the [recently announced Cloud component](https://home-assistant.io/blog/2017/12/17/introducing-home-assistant-cloud/))
 
 I hope to have a little more done down the road, right now I just have to get some home reno's done =) Slowly but surely...
