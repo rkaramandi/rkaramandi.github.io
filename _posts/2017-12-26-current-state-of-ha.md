@@ -10,7 +10,7 @@ share: true
 I've been asked a few times about what I'm running at home in terms of home automation. Right now, my needs are pretty simple; it's all about making my life easy and not having to worry about the little things.
 
 ## Light Switches:
-I'm primarily on the Lutron ecosystem. I did start out with Linear Z-wave switches, but they were a bit tedious to work with and didn't really look good. Moreover, my house wasn't built with home-automation in mind, and used shallower wall-boxes, which meant I had to use wall-box extenders from Home Depot (https://www.homedepot.ca/en/home/p.shallow-wallbox-extender-for-gfci-white.1000152020.html) to get around it. The Lutron switches were shallower, which allowed me to mount the switches flush against the wall, like normal switches usually are. I started with a bridge/dimmer kit then expanded from there.
+I'm primarily on the Lutron ecosystem. I did start out with Linear Z-wave switches, but they were a bit tedious to work with and didn't really look good. Moreover, my house wasn't built with home-automation in mind, and used shallower wall-boxes, which meant I had to use [wall-box extenders](https://www.homedepot.ca/en/home/p.shallow-wallbox-extender-for-gfci-white.1000152020.html) from Home Depot to get around it. The Lutron switches were shallower, which allowed me to mount the switches flush against the wall, like normal switches usually are. I started with a bridge/dimmer kit then expanded from there.
 
   - Lutron
     - [Lutron Caseta Wireless Dimmer Kit with Smart Bridge](http://amzn.to/2DgnCs9)
