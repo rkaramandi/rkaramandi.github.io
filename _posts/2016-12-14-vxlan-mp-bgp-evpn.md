@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "VXLAN // MP-BGP EVPN"
 description: If you aren't familiar with VXLAN, check out my initial post on VXLAN to get an idea of what it is. We're going to expand on that topic in terms of how it works. Before we talk about VXLAN with MP-BGP EVPN, it's important to understand how traditional VXLAN works, and what some of the shortcomings are.
 date:   2016-12-14

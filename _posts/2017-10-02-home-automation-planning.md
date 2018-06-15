@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "Home Automation // Considerations before automating a home"
 description: What should you consider while designing a home automation system? This topic covers things like what you can automate, and designing for usability and natural interaction with daily life.
 date:   2017-10-02

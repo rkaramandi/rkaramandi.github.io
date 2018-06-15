@@ -1,74 +1,33 @@
-# Basic
-name:               "Connect > A Tech Blog by Rohan Karamandi"
+# Filename: _config.yml
 
-author:
-  twitter:          rohank9
-  github:           rkaramandi
-  linkedin:         rkaramandi
-  instagram:        rohank9
+# Site-wide Variables:
+name: "Rohan Karamandi"
+description: "A Personal Technology Blog"
 
-copyright:
-  year:             2017
-  name:             "Rohan Karamandi"
+# Social Media
+twitter: "rohank9"
+github: "rkaramandi"
+linkedin: "rkaramandi"
 
-# Google-analytics
-google-analytics:
-  id:               "UA-103855580-1"
-
-# Disqus
-disqus:
-  id:               "karamandi"
-
-# URL
-url:                "http://pages.karamandi.com" # the base hostname & protocol for your site
-baseurl:            "" # the subpath of your site, e.g. /blog
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:           America/Toronto
-permalink:          /:title/
-
-# Pagination
-paginate:           10
-paginate_path:      /page:num/
-
-# Markdown
-markdown:           kramdown
-kramdown:
-  input:            GFM
-
-# Navigation
+# Site Navigation
 nav:
-  - name:           "About"
-    url:            "/about"
-  # - name:           "Archive"
-  #   url:            "/archive"
-  - name:           "Tags"
-    url:            "/tags"
+  - name: "Home"
+    url: "/index"
+  - name: "About"
+    url: "/about"
 
 
-# Sass
-sass:
-  sass_dir:         _sass
-  style:            :compressed
+# Build Settings:
+## Theme
+markdown: kramdown
+theme: minima
+highlighter: rouge
 
-# Scopes
-defaults:
-  -
-    scope:
-      path:         ""
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      path:         ""
-      type:         "posts"
-    values:
-      layout:       "post"
+## Pagination
+paginate: 5
 
-# jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
+## Plugin
 plugins:
-#  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-seo-tag
   - jekyll-paginate
-
-exclude:            [vendor]

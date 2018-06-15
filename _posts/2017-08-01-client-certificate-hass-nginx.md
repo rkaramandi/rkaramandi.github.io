@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "Gist // Create Client Certificates with NGINX for use with Home Assistant"
 description: Another Gist that someone asked me to do. Here we use Nginx with self-signed client certificates to frontend Home Assistant (or really anything else)
 date:   2017-08-01

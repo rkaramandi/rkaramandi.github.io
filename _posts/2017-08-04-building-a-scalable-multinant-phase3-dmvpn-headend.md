@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "DMVPN // Building a Scalable Multi-Tenant Phase-3 DMVPN Headend"
 description: For whatever reason, I end up supporting technology for a lot of events, some simultaneously. A lot of times, when you’re using Telepresence endpoints for events, remote hands-on labs, etc. you want to be able to have separation between events so that one group doesn’t break another group’s stuff. At the same time, I don’t want to have to be deploying 30 different routers in my DMZ for 30 different events; it’s just an administrative nightmare. Instead, what we opted for, was to use multi-tenanted DMVPN headend for site-to-site connectivity.
 date: 2017-08-04

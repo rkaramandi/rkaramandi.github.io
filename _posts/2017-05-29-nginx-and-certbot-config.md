@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "Gist // Running NGINX and CertBot Containers on the Same Host"
 description: A lot of people run into the problem of running Let's Encrypt's CertBot Tool and an NGINX on the same container host. A big part of this has to do with CertBot needing either port 80 or 443 open for the tool  to work as intended. This tends to conflict with NGINX as most people usually use port 80 (HTTP) or 443 (HTTPS) for their reverse proxy. Section 1 outlines how to configure NGINX to get this to work, and Section 2 is the Docker command to run CertBot.
 date:   2017-05-29

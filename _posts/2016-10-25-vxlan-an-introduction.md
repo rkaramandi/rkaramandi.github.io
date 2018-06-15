@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "VXLAN // An Introduction"
 description: For my first blog post, I thought I should start something that's near and dear to my heart - and a something that a lot of people seem to be confused about - VXLAN, or Virtual eXtensible LAN.
 date:   2016-10-25

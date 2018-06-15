@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "Home Automation // Current State of My Smart Home"
 description: Here's what I'm running at home today!
 date:   2017-12-26

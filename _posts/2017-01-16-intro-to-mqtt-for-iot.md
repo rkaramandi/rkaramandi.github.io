@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "MQTT // An Intro to MQTT for IoT"
 description: Lately, I've been into building custom sensors and I've been talking to Farraday Robotech and he mentioned that it would be pretty helpful if I could do an introductory post about MQTT and its use in IoT applications.
 date: 2017-01-16

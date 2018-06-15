@@ -1,12 +1,24 @@
 ---
 layout: default
 ---
-<header>
-  <div class="header-small">
-    <a href="{{site.url}}{{site.baseurl}}">{{ site.name }}</a>
+<!-- post.html -->
+<section class="module-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="post">
+          <div class="post-header font-alt">
+            <h1 class="post-title">{{ page.title }}</h1>
+          </div>
+          <div class="post-entry">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+      {% include sidebar.html %}
+    </div>
   </div>
-</header>
-<div class="page">
-  <div class="page-title">{{ page.title }}</div>
-  {{ content }}
-</div>
+</section>
+
+{% include page-footer.html %}
+{% include site-footer.html %}
