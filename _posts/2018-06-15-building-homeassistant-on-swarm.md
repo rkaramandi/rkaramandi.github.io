@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Rohan Karamandi"
 title:  "Home Automation // Building Home Assistant on Docker Swarm"
 description: I rebuilt my Home Assistant instance on Swarm for uptime!
 date:   2018-06-15
