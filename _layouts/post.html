@@ -16,7 +16,7 @@ layout: default
             {{ content }}
           </div>
         </div>
-        {% include disqus.html %}
+        {% if page.comments %}{% include disqus.html %}{% endif %}
       </div>
       {% include sidebar.html %}
     </div>
