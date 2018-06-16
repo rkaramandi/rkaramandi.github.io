@@ -52,7 +52,7 @@ Even though I have other Nest items (below) I opted to go with an Ecobee3 since 
   - [TrackR Bravo](https://amzn.to/2t1lAJY) (deprecated)
 
 ## Cleaning:
-  - [iRobot Roomba 860](https://amzn.to/2lbiT47)
+  - [iRobot Roomba 880](https://amzn.to/2lbiT47)
   - [iRobot Braava Mopping Robot](https://amzn.to/2MxBcNh)
 
 ## Smoke / Fire Alarm
