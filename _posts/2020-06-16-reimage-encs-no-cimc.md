@@ -14,7 +14,7 @@ It’s been a while since I’ve posted, and I've been meaning to post more home
 
 If you’re not familiar with the Cisco Enterprise Network Compute System (ENCS) platform, check it out [here](https://cisco.com/go/encs). Essentially, ENCS is a platform built around running enterprise NFV’s and has some advanced capabilities that I will talk about in future blog posts. ENCS runs a purpose-built hypervisor named NFVIS, which you may be familiar with if you use Cisco [Cloud Services Platform](https://cisco.com/go/csp) (CSP) servers. 
 
-The scenario here is that they have a large number of branches (1500+) where an old version of NFVIS is installed on the devices. Instead of having to go through them and upgrade them one by one, validate, and re-connect, they are looking to manage them through [Cisco vManage](https://cisco.com/go/sdwan) which is the management UI used to manage SDWAN, which they operate today. 
+The scenario here is that they have a large number of branches (1500+) where an old version of NFVIS is installed on the devices. Instead of having to go through them and upgrade them one by one, validate, and re-connect, they are looking to manage them through [Cisco vManage](https://cisco.com/go/sdwan) which is the management UI used to manage Cisco SDWAN, which they operate today. 
 
 If you’re not familiar with CIMC, the Cisco Integrated Management Controller is normally found on compute platforms, such as UCS to perform out-of-band / lights-out management tasks on the server. CIMC is typically out-of-band from the processor (i.e. it has its own processor) and NICs, but the NIC’s don’t always have to be out-of-band. The ENCS platform also leverages CIMC as to ensure the ability to manage the system remotely if/when the box is turned off. For example, you will have the ability to re-image the ENCS box while it is powered off, as long as you have remote connectivity to the CIMC port (possibly through LTE or a secondary router).
 
@@ -39,7 +39,7 @@ These would map the following ports to the CIMC using the in-band management IP 
 
 ### Download and map an ISO to the ENCS via CIMC CLI
 
-Now - the premise of this was to upgrade the ENCS via an ISO mount. To do this, we want to upload the ISO to the CIMC part of the ENCS, since the main NFVIS portion of this is going to get wiped and get a fresh install. As such, we want to SSH to the newly in-band CIMC port, and go to the image mapping section. Obviously, replace NVFIS_IP with the IP address of your NFVIS instance.
+Now - the premise of this was to upgrade the ENCS via an ISO mount. To do this, we want to upload the ISO to the CIMC part of the ENCS, since the main NFVIS portion of this is going to get wiped and get a fresh install. As such, we want to SSH to the newly in-band CIMC port, and go to the image mapping section. Obviously, replace `NVFIS_IP` with the IP address of your NFVIS instance.
 
 ```
 ssh -p 20227 admin@NFVIS_IP
