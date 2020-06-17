@@ -160,3 +160,4 @@ ENCS5412 /chassis #
 
 You **WILL** lose access to the CIMC (since you don’t have a dedicated port to access it), and it might take a while to install NFVIS, but it will keep running in the background even though the box might upgrade once or twice through the BIOS updates, firmware updates, etc.
 
+[Edit] It's worth a mention, the assumption is that either there is DHCP enabled on the WAN to access manually or go to some sort of provisioning system such as vManage (version 20.1.1.1 and above +), NSO or Cisco DNA Center; or that there is DHCP on your Management port so you can access it from there.
