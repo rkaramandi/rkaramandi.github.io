@@ -8,9 +8,9 @@ tags: [nfv, encs, networking, sdn]
 comments: true
 share: true
 ---
-## Re-Imaging ENCS via CIMC when no CIMC connection is present
-
 It’s been a while since I’ve posted, and I've been meaning to post more home automation stuff, but this is something top of mind for some of my enterprise customers, and thought it would be good to share. Before continuing, I would like to thank Kent Lai for helping me validate the configuration. Also, before we start, I cannot stress enough that you should FIRST TRY THIS IN A LAB!! Also note that you're doing this at your own risk! Don't blame me if you break anything :).
+
+## Re-Imaging ENCS via CIMC when no CIMC connection is present
 
 If you’re not familiar with the Cisco Enterprise Network Compute System (ENCS) platform, check it out [here](https://cisco.com/go/encs). Essentially, ENCS is a platform built around running enterprise NFV’s and has some advanced capabilities that I will talk about in future blog posts. ENCS runs a purpose-built hypervisor named NFVIS, which you may be familiar with if you use Cisco [Cloud Services Platform](https://cisco.com/go/csp) (CSP) servers. 
 
