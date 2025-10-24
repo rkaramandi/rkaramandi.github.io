@@ -642,6 +642,16 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nav-logo-image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    gap: calc(var(--spacing-unit) * 1);
+  }
+
   .nav-menu {
     position: fixed;
     top: 70px;
