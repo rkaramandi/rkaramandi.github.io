@@ -7,6 +7,7 @@
 
   {% seo %}
 
+  {% include author-schema.html %}
   {% include g-analytics.html %}
 
   <!-- DNS Prefetch for external resources -->
@@ -16,7 +17,7 @@
 
   <!-- Preload critical assets -->
   <link rel="preload" href="{{ site.baseurl }}/assets/css/modern-style.css" as="style">
-  <link rel="preload" href="{{ site.baseurl }}/assets/js/page.js" as="script">
+  <link rel="preload" href="{{ site.baseurl }}/assets/js/home.js" as="script">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/images/favicons/apple-icon-180x180.png">
@@ -45,8 +46,8 @@
       <div class="nav-menu" id="navMenu">
         <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
         <a href="{{ site.baseurl }}/blog" class="nav-link">Blog</a>
-        <a href="{{ site.baseurl }}/#about" class="nav-link">About</a>
-        <a href="{{ site.baseurl }}/#connect" class="nav-link">Connect</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#connect" class="nav-link">Connect</a>
       </div>
       <div class="nav-toggle" id="navToggle">
         <span></span>
@@ -58,18 +59,9 @@
 
   <!-- Main Content -->
   <main>
-    <div class="page-content">
-      {{ content }}
-    </div>
+    {{ content }}
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All views are my own.</p>
-      <p class="footer-note">Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
-    </div>
-  </footer>
-
-  <script src="{{ site.baseurl }}/assets/js/page.js" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/home.js" defer></script>
 </body>
 </html>

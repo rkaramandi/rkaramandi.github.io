@@ -1,0 +1,62 @@
+name: Minify CSS
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'assets/css/*.css'
+      - '!assets/css/*.min.css'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'assets/css/*.css'
+      - '!assets/css/*.min.css'
+  workflow_dispatch:
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: |
+        npm install -g clean-css-cli
+
+    - name: Minify CSS files
+      run: |
+        for file in assets/css/*.css; do
+          # Skip already minified files
+          if [[ ! $file =~ \.min\.css$ ]]; then
+            filename=$(basename "$file" .css)
+            echo "Minifying $file..."
+            cleancss -o "assets/css/${filename}.min.css" "$file"
+          fi
+        done
+
+    - name: Check for changes
+      id: git-check
+      run: |
+        git diff --quiet assets/css/*.min.css || echo "changed=true" >> $GITHUB_OUTPUT
+
+    - name: Commit minified CSS
+      if: steps.git-check.outputs.changed == 'true'
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add assets/css/*.min.css
+        git commit -m "Auto-minify CSS files [skip ci]"
+
+    - name: Push changes
+      if: steps.git-check.outputs.changed == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}

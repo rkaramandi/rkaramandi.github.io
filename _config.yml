@@ -3,11 +3,26 @@
 # Site-wide Variables:
 name: "Rohan Karamandi"
 description: "A Personal Technology Blog"
+url: "https://karamandi.com"
+baseurl: ""
+author: "Rohan Karamandi"
+locale: "en_US"
 
 # Social Media
-twitter: "rohank9"
+twitter:
+  username: rohank9
+  card: summary_large_image
 github: "rkaramandi"
 linkedin: "rkaramandi"
+
+# Social Profiles for SEO
+social:
+  name: "Rohan Karamandi"
+  links:
+    - "https://twitter.com/rohank9"
+    - "https://github.com/rkaramandi"
+    - "https://linkedin.com/in/rkaramandi"
+    - "https://techhub.social/@rkaramandi"
 
 # Site Navigation
 nav:
@@ -20,14 +35,16 @@ nav:
 # Build Settings:
 ## Theme
 markdown: kramdown
-theme: minima
+# theme: minima
 highlighter: rouge
 
 ## Pagination
 paginate: 5
+paginate_path: "/blog/page:num/"
 
 ## Plugin
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-paginate

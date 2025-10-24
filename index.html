@@ -1,49 +1,131 @@
 ---
-layout: default
+layout: home
+title: "Rohan Karamandi - Podcast Host & Technology Enthusiast"
+description: "Expert insights on networking, home automation, and enterprise technology from Home Assistant Podcast host and technology enthusiast Rohan Karamandi."
 ---
-<!-- index.html -->
-<section class="module-small">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-{% for post in paginator.posts %}
-        <div class="post">
-          <div class="post-header font-alt">
-            <h2 class="post-title">
-              {% if post.link %}<a href="{{ post.link }}">{% else %}<a href="{{ post.url }}">{% endif %}{{ post.title }}</a>
-            </h2>
-            <div class="post-meta">
-                By&nbsp;<a href="#">{{ post.author }}</a> | {{ post.date | date_to_string }} | {% for tag in post.tags %} <a href="{{ site.baseurl }}/tags#{{ tag | first }}">{{ tag }}{% unless forloop.last %},{% endunless %} </a>{% endfor %}
-            </div>
-          </div>
-    {% if post.description %}
-          <div class="post-entry">
-            <p>{{ post.description }}</p>
-          </div>
-    {% endif %}
-
-          <div class="post-more">
-            {% if post.link %}<a class="more-link" href="{{ post.link }}">{% else %}<a class="more-link" href="{{ post.url }}">&nbsp;Read more</a>{% endif %}
-          </div>
-        </div>
-{% endfor %}
-
-<!-- Pagination -->
-        <div class="pagination font-alt">
-{% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path }}"><i class="fa fa-angle-left"></i>&nbsp;Previous Page</a>
-{% endif %}
-{% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path }}">Next Page&nbsp;<i class="fa fa-angle-right"></i></a>
-{% endif %}
-        </div>
+<!-- Modern About Me Landing Page -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">Rohan Karamandi</h1>
+      <p class="hero-subtitle">Podcast Host | Technology Enthusiast | Systems Engineer</p>
+      <p class="hero-description">
+        Making smart home tech accessible through podcasting, while building enterprise networks by day.
+      </p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">Learn More</a>
+        <a href="/blog" class="btn btn-secondary">Read My Blog</a>
       </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <a href="#about">
+      <span></span>
+    </a>
+  </div>
+</section>
 
-{% include sidebar.html %}
-
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>About Me</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I'm a host on the <a href="https://hasspodcast.io" target="_blank" rel="noopener">Home Assistant Podcast</a>,
+          where I share insights about home automation, smart home technology, and the Home Assistant ecosystem.
+          I love exploring the intersection of technology and everyday life, finding ways to make
+          complex systems accessible and useful.
+        </p>
+        <p>
+          As a Systems Engineer, my expertise spans various technologies, with a particular passion
+          for Networking, Wireless, and Security solutions. I have experience across various verticals,
+          helping design and implement network infrastructure.
+        </p>
+        <p>
+          When I'm not behind a microphone or keyboard, I'm exploring new destinations and discovering
+          great food along the way.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-{% include page-footer.html %}
-{% include site-footer.html %}
+<section class="expertise-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Areas of Focus</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <i class="fa fa-microphone"></i>
+        </div>
+        <h3>Podcasting</h3>
+        <p>Co-hosting and producing content for the Home Assistant community podcast.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <i class="fa fa-home"></i>
+        </div>
+        <h3>Home Automation</h3>
+        <p>Smart home integration, Home Assistant, and IoT device orchestration.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <i class="fa fa-sitemap"></i>
+        </div>
+        <h3>Networking</h3>
+        <p>Network architecture, design, and infrastructure implementation for enterprise environments.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">
+          <i class="fa fa-wifi"></i>
+        </div>
+        <h3>Wireless</h3>
+        <p>Wireless network design, deployment, and optimization for high-performance connectivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect" class="connect-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Let's Connect</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="social-links">
+      <a href="https://techhub.social/@rkaramandi" target="_blank" rel="noopener me" class="social-link">
+        <i class="fa fa-at"></i>
+        <span>Mastodon</span>
+      </a>
+      <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener" class="social-link">
+        <i class="fa fa-twitter"></i>
+        <span>Twitter</span>
+      </a>
+      <a href="https://github.com/{{ site.github }}" target="_blank" rel="noopener" class="social-link">
+        <i class="fa fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener" class="social-link">
+        <i class="fa fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://www.youtube.com/@hasspodcast" target="_blank" rel="noopener" class="social-link">
+        <i class="fa fa-youtube"></i>
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All views are my own.</p>
+    <p class="footer-note">Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+  </div>
+</footer>

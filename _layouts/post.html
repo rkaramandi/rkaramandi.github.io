@@ -1,26 +1,232 @@
----
-layout: default
----
-<!-- post.html -->
-<section class="module-small">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="post">
-          <div class="post-header font-alt">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <div class="post-meta">By&nbsp;<a href="#">{{ page.author }}</a> | {{ page.date | date_to_string }} | {% for tag in page.tags %} <a href="{{ site.baseurl }}/tags#{{ tag }}">{{ tag }}{% unless forloop.last %},{% endunless %} </a>{% endfor %}
-            </div>
-          </div>
-          <div class="post-entry">
-            {{ content }}
-          </div>
-        </div>
-        {% if page.comments %}{% include disqus.html %}{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% seo %}
+
+  <!-- Schema.org Article structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "author": {
+      "@type": "Person",
+      "name": {{ page.author | default: site.author | jsonify }}
+    },
+    "datePublished": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+    "dateModified": {{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" | jsonify }},
+    "description": {{ page.description | default: page.excerpt | strip_html | truncatewords: 30 | jsonify }},
+    {% if page.image %}
+    "image": {
+      "@type": "ImageObject",
+      "url": {{ page.image | absolute_url | jsonify }},
+      "width": 1200,
+      "height": 630
+    },
+    {% endif %}
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ page.url | absolute_url | jsonify }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ site.name | jsonify }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ "/assets/images/favicons/android-icon-192x192.png" | absolute_url | jsonify }}
+      }
+    }
+  }
+  </script>
+
+  {% include g-analytics.html %}
+
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="{{ site.baseurl }}/assets/css/modern-style.css" as="style">
+  <link rel="preload" href="{{ site.baseurl }}/assets/css/post-style.css" as="style">
+  <link rel="preload" href="{{ site.baseurl }}/assets/js/post.js" as="script">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/images/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/images/favicons/favicon-16x16.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Font Awesome -->
+  <link href="{{ site.baseurl }}/assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="{{ site.baseurl }}/assets/css/modern-style.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/post-style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="{{ site.baseurl }}/" class="nav-logo">{{ site.name }}</a>
+      <div class="nav-menu" id="navMenu">
+        <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
+        <a href="{{ site.baseurl }}/blog" class="nav-link">Blog</a>
+        <a href="{{ site.baseurl }}/#about" class="nav-link">About</a>
+        <a href="{{ site.baseurl }}/#connect" class="nav-link">Connect</a>
       </div>
-      {% include sidebar.html %}
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-  </div>
-</section>
-{% include page-footer.html %}
-{% include site-footer.html %}
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <article class="post-container">
+      <header class="post-header">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a itemprop="item" href="{{ site.baseurl }}/"><span itemprop="name">Home</span></a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a itemprop="item" href="{{ site.baseurl }}/blog"><span itemprop="name">Blog</span></a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name">{{ page.title }}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </nav>
+
+        <div class="post-meta-top">
+          <a href="{{ site.baseurl }}/blog" class="back-link">
+            <i class="fa fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+          <span class="post-date">
+            <i class="fa fa-calendar"></i> Published: {{ page.date | date: "%B %-d, %Y" }}
+          </span>
+          {% if page.last_modified_at %}
+          <span class="post-updated">
+            <i class="fa fa-refresh"></i> Updated: {{ page.last_modified_at | date: "%B %-d, %Y" }}
+          </span>
+          {% endif %}
+          {% if page.author %}
+          <span class="post-author">
+            <i class="fa fa-user"></i> {{ page.author }}
+          </span>
+          {% endif %}
+          {% assign words = content | number_of_words %}
+          {% assign minutes = words | divided_by: 200 %}
+          {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
+          <span class="post-read-time">
+            <i class="fa fa-clock-o"></i> {{ minutes }} min read
+          </span>
+        </div>
+        {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags#{{ tag }}" class="post-tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </header>
+
+      <!-- Table of Contents (auto-generated for posts with h2/h3 headings) -->
+      {% assign headings = content | split: '<h2' %}
+      {% if headings.size > 2 %}
+      <div class="table-of-contents">
+        <h2 class="toc-title" id="toc-toggle">
+          <i class="fa fa-list"></i> Table of Contents
+          <i class="fa fa-chevron-down toc-chevron"></i>
+        </h2>
+        <div id="toc-list" class="toc-collapsed"></div>
+      </div>
+      {% endif %}
+
+      <div class="post-content">
+        {{ content }}
+      </div>
+
+      {% if page.comments %}
+      <div class="post-comments">
+        {% include disqus.html %}
+      </div>
+      {% endif %}
+
+      <!-- Related Posts -->
+      {% assign maxRelated = 3 %}
+      {% assign minCommonTags = 1 %}
+      {% assign relatedPosts = "" | split: "" %}
+
+      {% for post in site.posts %}
+        {% if post.url != page.url %}
+          {% assign sameTagCount = 0 %}
+          {% for tag in post.tags %}
+            {% if page.tags contains tag %}
+              {% assign sameTagCount = sameTagCount | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          {% if sameTagCount >= minCommonTags %}
+            {% assign relatedPosts = relatedPosts | push: post %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if relatedPosts.size > 0 %}
+      <section class="related-posts">
+        <h2><i class="fa fa-bookmark"></i> Related Posts</h2>
+        <div class="related-posts-grid">
+          {% for post in relatedPosts limit:maxRelated %}
+          <article class="related-post-card">
+            <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+            <p class="related-post-date">{{ post.date | date: "%B %-d, %Y" }}</p>
+            {% if post.description %}
+            <p class="related-post-excerpt">{{ post.description | truncatewords: 20 }}</p>
+            {% else %}
+            <p class="related-post-excerpt">{{ post.content | strip_html | truncatewords: 20 }}</p>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <footer class="post-footer">
+        <a href="{{ site.baseurl }}/blog" class="back-to-blog">
+          <i class="fa fa-arrow-left"></i> Back to all posts
+        </a>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All views are my own.</p>
+      <p class="footer-note">Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+    </div>
+  </footer>
+
+  <script src="{{ site.baseurl }}/assets/js/post.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+---
+layout: page
+title: Blog
+description: "Expert insights on networking, home automation, and technology from Rohan Karamandi. Explore articles about VXLAN, home assistant, IoT, and enterprise networking."
+permalink: /blog/
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Rohan Karamandi's Blog",
+  "description": "Thoughts on technology, networking, and home automation",
+  "url": "{{ site.url }}/blog/",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ site.author }}"
+  }
+}
+</script>
+
+<div class="blog-container">
+  <div class="blog-header">
+    <h1>Blog Posts</h1>
+    <p class="blog-subtitle">Thoughts on technology, networking, and home automation</p>
+  </div>
+
+  <div class="blog-posts">
+    {% for post in site.posts %}
+    <article class="blog-card">
+      <div class="blog-card-content">
+        <div class="blog-meta">
+          <span class="blog-date">{{ post.date | date: "%B %-d, %Y" }}</span>
+          {% if post.tags %}
+          <div class="blog-tags">
+            {% for tag in post.tags %}
+            <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="blog-tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <h2 class="blog-title">
+          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+        {% if post.description %}
+        <p class="blog-excerpt">{{ post.description }}</p>
+        {% else %}
+        <p class="blog-excerpt">{{ post.content | strip_html | truncatewords: 40 }}</p>
+        {% endif %}
+        <a href="{{ post.url | prepend: site.baseurl }}" class="blog-read-more">
+          Read more <i class="fa fa-arrow-right"></i>
+        </a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+
+  {% if site.posts.size == 0 %}
+  <div class="no-posts">
+    <p>No blog posts yet. Check back soon!</p>
+  </div>
+  {% endif %}
+</div>

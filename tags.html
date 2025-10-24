@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Tags
 ---
 <!-- tags.html -->
@@ -23,31 +23,29 @@ title: Tags
 	{% endif %}
 {% endfor %}
 
-<section class="module-small">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-{% for tag in tags %}
-        <div class="post">
-          <div class="post-header font-alt">
-            <h2 class="post-title" id="{{ tag | slugify }}">{{ tag }}</h2>
-          </div>
-          <div class="post-entry">
-            <ul>
-  {% for post in site.posts %}
-    {% if post.tags contains tag %}
-              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-            </ul>
-          </div>
-        </div>
-{% endfor %}
-      </div>
-{% include sidebar.html %}
-    </div>
+<div class="tags-container">
+  <div class="tags-header">
+    <h1>Browse by Tag</h1>
+    <p class="tags-subtitle">Explore posts organized by topic</p>
   </div>
-</section>
 
-{% include page-footer.html %}
-{% include site-footer.html %}
+  <div class="tags-list">
+{% for tag in tags %}
+    <div class="tag-section" id="{{ tag | slugify }}">
+      <h2 class="tag-title">{{ tag }}</h2>
+      <div class="tag-posts">
+        <ul>
+{% for post in site.posts %}
+  {% if post.tags contains tag %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <span class="post-date-inline">{{ post.date | date: "%B %-d, %Y" }}</span>
+          </li>
+  {% endif %}
+{% endfor %}
+        </ul>
+      </div>
+    </div>
+{% endfor %}
+  </div>
+</div>
