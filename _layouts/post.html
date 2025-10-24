@@ -80,7 +80,10 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo">{{ site.name }}</a>
+      <a href="{{ site.baseurl }}/" class="nav-logo">
+        <img src="{{ site.baseurl }}/assets/images/logo.svg" alt="RK Logo" class="nav-logo-image">
+        <span>{{ site.name }}</span>
+      </a>
       <div class="nav-menu" id="navMenu">
         <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
         <a href="{{ site.baseurl }}/blog" class="nav-link">Blog</a>
@@ -224,7 +227,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>&copy; {{ site.time | date: '%Y' }} {{ site.name }}. All views are my own.</p>
-      <p class="footer-note">Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></p>
+      <p class="footer-note">Hosted on <a href="https://github.com/rkaramandi/rkaramandi.github.io" target="_blank" rel="noopener">GitHub Pages</a> | Website theme vibe-coded by <a href="https://claude.com/product/claude-code" target="_blank" rel="noopener">Claude Code</a></p>
     </div>
   </footer>
 

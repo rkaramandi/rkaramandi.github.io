@@ -114,6 +114,19 @@ a:hover {
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.nav-logo-image {
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-base);
+}
+
+.nav-logo:hover .nav-logo-image {
+  transform: rotate(5deg) scale(1.05);
 }
 
 .nav-menu {

@@ -43,7 +43,10 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo">{{ site.name }}</a>
+      <a href="{{ site.baseurl }}/" class="nav-logo">
+        <img src="{{ site.baseurl }}/assets/images/logo.svg" alt="RK Logo" class="nav-logo-image">
+        <span>{{ site.name }}</span>
+      </a>
       <div class="nav-menu" id="navMenu">
         <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
         <a href="{{ site.baseurl }}/blog" class="nav-link">Blog</a>
